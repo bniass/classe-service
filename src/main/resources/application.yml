@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: classe-service
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  #cloud:
+    #config:
+      #uri: http://localhost:8888
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/classe-service
+    username: postgres
+    password: Mouhamed1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show_sql: true
+
+server:
+  port: 8087
+  servlet:
+    context-path: /classe-service
+
+springdoc:
+  api-docs:
+    path: /api-docs
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
